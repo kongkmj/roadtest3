@@ -1,0 +1,421 @@
+
+
+<div id="page-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Dashboard
+                </h1>
+                <ol class="breadcrumb">
+                    <li class="active">
+                        <i class="fa fa-dashboard"></i> Dashboard
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-sitemap fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">40</div>
+                                <div>중계기</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-rss-square fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">30</div>
+                                <div>감지기</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="glyphicon glyphicon-exclamation-sign fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">13</div>
+                                <div>주의</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-long-arrow-right fa-fw"></i> 통계</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div  >
+                  <canvas id="canvas2"></canvas>
+                      </div>
+                        <script>
+                        var data = {
+                            labels: [
+                              "양호",
+                              "주의",
+                              "위험"
+                            ],
+                            datasets: [
+                              {
+                                data: [30, 40, 60],
+                                backgroundColor: [
+                                  "rgba(71,200,62,0.7)",
+                                  "rgba(255,187,0,0.7)",
+                                  "rgba(255,0,0,0.7)"
+                                ],
+                                hoverBackgroundColor: [
+                                  "rgba(71,200,62,0.8)",
+                                  "rgba(255,187,0,0.8)",
+                                  "rgba(255,0,0,0.8)"
+                                ]
+                              }]
+                            };
+                      //  window.onload = function () {
+
+
+                        var ctx = document.getElementById("canvas2").getContext("2d");
+                        var myPieChart = new Chart(ctx,{
+                            type: 'pie',
+                            data: data
+                            //options: options
+                            });
+                    //    }
+                        </script>
+                        <div class="text-right">
+                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-9">
+          <script>
+          /*
+            var code = "<button>heelo</button>";
+            var normal = "btn btn-success btn-block";
+
+            document.getElementById("test4").innerHTML =code;
+            */
+          </script>
+          <div id = "test4">
+            <button type ="button" class="btn btn-success btn-block">양호
+            </button>
+          </div>
+      </div>
+
+        <br>
+        <div class ="row">
+
+        <div class="col-lg-7">
+          <label>Selects</label>
+          <select class="form-control">
+              <option>1 번도로</option>
+              <option>2 번도로</option>
+              <option>3 번도로</option>
+              <option>4 번도로</option>
+              <option>5 번도로</option>
+          </select>
+            <canvas id="canvas" width="50%" height="25%";>
+
+            </canvas>
+
+        </div>
+        <br>
+        <div id = "googleMap" style="width:680px;height:450px;"></div>
+        <br>
+        <br>
+        <!--
+        <button id="addDataset">Add Dataset</button>
+        <button id="removeDataset">Remove Dataset</button>
+        <button id="addData">Add Data</button>
+        <button id="removeData">Remove Data</button>
+      -->
+        <script>
+
+            //var MONTHS = [];
+            var randomScalingFactor = function() {
+                return Math.round(Math.random() * 100 * (Math.random() > 0.5 ? -1 : 1));
+            };
+            var randomColorFactor = function() {
+                return Math.round(Math.random() * 255);
+            };
+            var randomColor = function(opacity) {
+                return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
+            };
+            var config = {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [
+                    {
+                        label: "1번 구역",
+                        data: [],
+                        length:data.length,
+                        lineTension: 0,
+                        fill: false,
+                    }, ]
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    hover: {
+                        mode: 'label'
+                    },
+                    scales: {
+                        xAxes: [{
+
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'data'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks:{
+                              suggestedMax: 200,
+                              beginAtZero: true
+                            },
+                            display: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Time'
+                            }
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: '1번 도로'
+                    }
+                }
+            };
+
+            $.each(config.data.datasets, function(i, dataset) {
+                var background = randomColor(0.5);
+                dataset.borderColor = background;
+                dataset.backgroundColor = background;
+                dataset.pointBorderColor = background;
+                dataset.pointBackgroundColor = background;
+                dataset.pointBorderWidth = 1;
+            });
+
+            window.onload = function() {
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx, config);
+                console.log(config.data.datasets.data);
+            };
+      </script>
+
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+        var socket = io.connect("http://localhost:3000");
+        var msg_check = $("#test4 button");
+        socket.on('chat message',function (msg) {
+          console.log("chat message: ",msg);
+          /*
+          if(msg>100){
+            console.log('주의');
+            window.onload = function() {
+                var test2 = document.getElementById("test4");
+                window.alert=
+            };
+
+          }
+*/
+          if(100<msg/100){
+            if(msg/100>200){
+              msg_check.text("위험");
+              msg_check.removeClass("btn-warning");
+              msg_check.addClass("btn-danger");
+            }
+            else{
+            msg_check.text("주의");
+            msg_check.removeClass("btn-success");
+            msg_check.addClass("btn-warning");
+          }
+          }
+          else{
+            msg_check.text("양호");
+            msg_check.removeClass("btn-warning");
+            msg_check.addClass("btn-success");
+          }
+
+          if (config.data.datasets.length > 0) {
+              var now = new Date();
+              var hour = now.getHours();
+              var min = now.getMinutes();
+              var second = now.getSeconds();
+              config.data.labels.push(hour+":"+min+":"+second);
+
+              if(config.data.labels.length==21){
+                $.each(config.data.datasets, function(i, dataset) {
+                    config.data.labels.shift(0,21);
+                    dataset.data.shift(0,20);
+                    dataset.data.push((msg/100));
+                });
+              }
+              else{
+              $.each(config.data.datasets, function(i, dataset) {
+                  dataset.data.push((msg/100));
+              });
+            }
+
+              window.myLine.update();
+          }
+        });
+
+
+
+        </script>
+
+        <!-- /.row -->
+        <!--
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i> 월별 차트</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div id="page-wrapper">
+
+                      <div style="width: 90" >
+                  <canvas id="canvas"></canvas>
+              </div>
+              <script>
+              var randomScalingFactor = function() {
+                  return (Math.random() * 60);
+              };
+              var randomColorFactor = function() {
+                  return Math.round(Math.random() * 255);
+              };
+              var randomColor = function() {
+                  return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',.7)';
+              };
+
+              var barChartData = {
+                  labels: ["1 월", "2 월", "3 월", "4 월", "5 월"],
+                  datasets: [{
+                      label: '양호',
+                      backgroundColor: "rgba(71,200,62,0.7)",
+                      yAxisID: "y-axis-1",
+                      data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                  }, {
+                      label: '주의',
+                      backgroundColor: "rgba(255,187,0,0.7)",
+                      yAxisID: "y-axis-1",
+                      data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                  }, {
+                      label: '위험',
+                      backgroundColor: "rgba(255,0,0,0.7)",
+                      yAxisID: "y-axis-1",
+                      data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
+                  }]
+
+              };
+              window.onload = function() {
+                  var ctx = document.getElementById("canvas").getContext("2d");
+                  window.myBar = Chart.Bar(ctx, {
+                      data: barChartData,
+                      options: {
+                          responsive: true,
+                          hoverMode: 'label',
+                          hoverAnimationDuration: 400,
+                          stacked: false,
+                          title:{
+                              display:true,
+                              //text:""
+                          },
+                          scales: {
+                              yAxes: [{
+                                  ticks:{
+                                    suggestedMax:100
+                                  },
+                                  type: "linear", // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                                  display: true,
+                                  position: "left",
+                                  id: "y-axis-1",
+                              }],
+                          }
+                      }
+                  });
+              };
+              </script>
+
+
+                      <!-- /#page-wrapper -->
+                        <!--
+                      </div>
+
+                    </div>
+                </div>
+            </div>
+          -->
+
+        </div>
+
+
+    </div>
+    <!-- /.container-fluid -->
+
+</div>
